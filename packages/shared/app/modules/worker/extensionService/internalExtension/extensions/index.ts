@@ -6,11 +6,12 @@ import { formatManifest } from '../../shared'
 import { extensionState } from '../../state'
 import type { ExtensionContext, ExtensionHostContext } from './type'
 import * as webdav from './webdav'
+import * as subsonic from './subsonic'
 
 export const extensions: Array<{
   setup: (extension: AnyListen.Extension.Extension, content: ExtensionHostContext) => Promise<ExtensionContext>
   pkg: AnyListen.Extension.Manifest
-}> = [webdav]
+}> = [webdav, subsonic]
 
 type Extension = (typeof extensions)[number]
 

@@ -30,7 +30,7 @@ Image release: [https://hub.docker.com/r/lyswhut/any-listen-web-server](https://
 
 ### Direct Deployment
 
-> Requirement: Node.js 20+
+> Requirement: Node.js >=22.12.0 || ^20.19.0
 
 Download the latest version and extract it to your target directory: [https://github.com/any-listen/any-listen-web-server/releases](https://github.com/any-listen/any-listen-web-server/releases)
 
@@ -96,13 +96,41 @@ Upgrade steps:
 
 ### Build from Source
 
+> Requirement: Node.js >=22.12.0 || ^20.19.0, pnpm >=10.33.2
+
 ```bash
+git clone https://github.com/any-listen/any-listen.git
+cd any-listen
 pnpm install
-pnpm run build:web
+pnpm build:web
 cd build
 mkdir data
-# Create config file config.cjs
+# 创建配置文件 data/config.cjs（参考上方 Usage Example）
 node index.cjs
+```
+
+### Desktop Build from Source
+
+> Requirement: Node.js >=22.12.0 || ^20.19.0, pnpm >=10.33.2
+
+```bash
+git clone https://github.com/any-listen/any-listen.git
+cd any-listen
+pnpm install
+pnpm build:desktop
+# 产物位于 packages/desktop/dist/
+```
+
+## Development
+
+```bash
+pnpm install
+# 桌面端开发模式（Vite HMR + Electron）
+pnpm dev:desktop
+# Web 端开发模式（Vite HMR + Koa）
+pnpm dev:web
+# 代码格式化
+pnpm fmt
 ```
 
 ## Contributing
